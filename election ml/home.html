@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <title>Final mandates prediction</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+        <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                  <a class="nav-link" href="{{url_for('home')}}">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="https://github.com/sarathravik/Portugal-Election-Final-Mandates-election-Prediction" target="_blank">Code Link</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="https://drive.google.com/drive/folders/1gu2JfCn-rhFWAjaqZSP2T3HrIXeigY2_" target="_blank">Project Report</a>
+                </li>
+        </div>
+        <div class="mx-auto order-0">
+            <p class="navbar-brand mx-auto">Portugal Election Final Mandates Prediction</p>
+        </div>
+        <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <div class="btn-group dropleft">
+                        <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          Project Team
+                        </button>
+                          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <a class="dropdown-item" href="https://www.linkedin.com/in/sarath-k-217950161" target="_blank">Sarath K</a>
+                            <a class="dropdown-item" href="http://www.linkedin.com/in/arpitha-raj-158b95221/" target="_blank">Arpitha Raj</a>
+                            <a class="dropdown-item" href="https://www.linkedin.com/in/gopakumar-kannan-5525101b3" target="_blank">Gopakumar P</a>
+                            <a class="dropdown-item" href="https://www.linkedin.com/in/neha-grace-joe-5a1381220/" target="_blank">Neha Grace Joe</a>
+                            <a class="dropdown-item" href="https://www.linkedin.com/in/muhammad-asif-jaleel-2b991419a" target="_blank">Muhammad Asif Jaleel</a>
+                          </div>
+                      </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <form class="needs-validation" novalidate action="{{url_for('predict')}}"method="post">
+        <div class="form-row">
+            <div class="col-md-4 mb-3">
+              <label for="validationpercentage">Pre.nullVotesPercentage</label>
+              <input type="text" class="form-control" name="pre.nullVotesPercentage" id="validationpercentage" placeholder="Example:20" aria-describedby="inputGroupPrepend" required>
+              <div class="invalid-feedback">
+                  Please choose a nullVotesPercentage.
+              </div>
+            </div>
+            <div class="col-md-4 mb-3">
+              <label for="validationivalidvote">Invalid Voters Percentage</label>
+              <input type="text" class="form-control" name="invalidVotesPercentage" id="validationivalidvote" placeholder="Example:40" aria-describedby="inputGroupPrepend" required>
+              <div class="invalid-feedback">
+                  Please choose a invalid voters Percentage.
+              </div>
+            </div>
+            <div class="col-md-4 mb-3">
+              <label for="validationvotes">Valid Votes Percentage</label>
+              <div class="input-group">
+                <input type="text" class="form-control" name="validVotesPercentage" id="validationvotes" placeholder="Example : 30" aria-describedby="inputGroupPrepend" required>
+                <div class="invalid-feedback">
+                  Please choose a valid votes Percentage.
+                </div>
+              </div>
+            </div>
+          </div>
+        <div class="form-row">
+            <div class="col-md-4 mb-3">
+              <label for="validationvoters">Voters Percentage</label>
+              <input type="text" class="form-control" name="votersPercentage" id="validationvoters" placeholder="example: 45" aria-describedby="inputGroupPrepend" required>
+              <div class="invalid-feedback">
+                Please Choose a  Voters Percentage
+              </div>
+            </div>
+            <div class="col-md-4 mb-3">
+              <label for="validationmandates">Available Mandates</label>
+              <input type="text" class="form-control" name="availableMandates" id="validationmandates" placeholder="example : 226" aria-describedby="inputGroupPrepend" required>
+              <div class="invalid-feedback">
+                Please Choose a  available mandates
+              </div>
+            </div>
+            <div class="col-md-4 mb-3">
+              <label for="validationnumparishes">Num Parishes</label>
+              <div class="input-group">
+                <input type="text" class="form-control" name="numParishes" id="validationnumparishes" placeholder="example : 147" aria-describedby="inputGroupPrepend" required>
+                <div class="invalid-feedback">
+                  Please choose a  Num Parishes.
+                </div>
+              </div>
+            </div>
+          </div>
+        <div class="form-row">
+            <div class="col-md-4 mb-3">
+              <label for="validationvotes">Votes</label>
+              <input type="text" class="form-control" name="Votes" id="validationvotes" placeholder="example : 6786" aria-describedby="inputGroupPrepend" required>
+              <div class="invalid-feedback">
+                Please choose a votes
+              </div>
+            </div>
+            <div class="col-md-4 mb-3">
+              <label for="validationHondt">Hondt</label>
+              <input type="text" class="form-control" name="Hondt" id="validationHondt" placeholder="example : 97" aria-describedby="inputGroupPrepend" required>
+              <div class="valid-feedback">
+                Please choose a  Hondt
+              </div>
+            </div>
+            <div class="col-md-4 mb-3">
+              <label for="validationtime">Time</label>
+              <div class="input-group">
+                <input type="text" class="form-control" name="time" id="validationtime" placeholder="values between 0 & 265" aria-describedby="inputGroupPrepend" required>
+                <div class="invalid-feedback">
+                  Please choose a  time.
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="col-md-4 mb-3">
+              <label for="validationtimeelapsed">Time Elapsed</label>
+              <input type="text" class="form-control" name="TimeElapsed" id="validationtimeelapsed" placeholder="example : 45(in minutes)" aria-describedby="inputGroupPrepend" required>
+              <div class="invalid-feedback">
+                Please choose  time elapsed
+              </div>
+          </div>
+            <div class="col-md-4 mb-3">
+              <label for="validationterritory">Territory Name</label>
+              <select class="form-control" name="territoryName" id="sel1">
+                <option selected>Open this select menu</option>
+                <option value="0">Açores</option>
+                <option value="1">Aveiro</option>
+                <option value="2">Beja</option>
+                <option value="3">Braga</option>
+                <option value="4">Bragança</option>
+                <option value="5">Castelo Branco</option>
+                <option value="6">Coimbra</option>
+                <option value="20">Évora</option>
+                <option value="7">Faro</option>
+                <option value="8">Guarda</option>
+                <option value="9">Leiria</option>
+                <option value="10">Lisboa</option>
+                <option value="11">Madeira</option>
+                <option value="12">Portalegre</option>
+                <option value="13">Porto</option>
+                <option value="14">Santarém</option>
+                <option value="15">Setúbal</option>
+                <option value="16">Território Nacional</option>
+                <option value="17">Viana do Castelo</option>
+                <option value="18">Vila Real</option>
+                <option value="19">Viseu</option>
+              </select>
+            </div>
+            <div class="col-md-4 mb-3">
+              <label for="validationCustomUsername">Party</label>
+              <div class="input-group">
+                <select class="form-control" name="Party" id="sel1">
+                    <option selected>Open this select menu</option>
+                    <option value="1">B.E</option>
+                    <option value="2">CDS-PP</option>
+                    <option value="10">PAN</option>
+                    <option value="11">PCP-PEV</option>
+                    <option value="12">PCTP/MRPP</option>
+                    <option value="13">PDR</option>
+                    <option value="14">PNR</option>
+                    <option value="15">PPD/PSD</option>
+                    <option value="16">PPM</option>
+                    <option value="17">PS</option>
+                    <option value="18">PTP</option>
+                    <option value="19">PURP</option>
+                    <option value="8">MPT</option>
+                    <option value="3">CH</option>
+                    <option value="20">R.I.R.</option>
+                    <option value="0">A</option>
+                    <option value="6">L</option>
+                    <option value="4">IL</option>
+                    <option value="5">JPP</option>
+                    <option value="9">NC</option>
+                    <option value="7">MAS</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-12 text-center">
+            <button class="btn btn-primary" type="submit">Submit form</button>
+            <button class="btn btn-primary" type="reset">reset</button>
+          </div>  
+      </form>
+      
+      <script>
+      // Example starter JavaScript for disabling form submissions if there are invalid fields
+      (function() {
+        'use strict';
+        window.addEventListener('load', function() {
+          // Fetch all the forms we want to apply custom Bootstrap validation styles to
+          var forms = document.getElementsByClassName('needs-validation');
+          // Loop over them and prevent submission
+          var validation = Array.prototype.filter.call(forms, function(form) {
+            form.addEventListener('submit', function(event) {
+              if (form.checkValidity() === false) {
+                event.preventDefault();
+                event.stopPropagation();
+              }
+              form.classList.add('was-validated');
+            }, false);
+          });
+        }, false);
+      })();
+      </script>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+  <style>
+    body {
+       background: url('/static/image/portugal.jpg') no-repeat center center fixed;
+       -webkit-background-size: cover;
+       -moz-background-size: cover;
+       -o-background-size: cover;
+       background-size: cover;
+       color:#fff;
+       background-color:#333;
+       font-family: 'Open Sans', Arial, Helvetica, Sans-Serif;
+   }
+   </style>
+  
+</html>
